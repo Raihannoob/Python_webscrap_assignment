@@ -14,7 +14,7 @@ print((mydb))
 
 url = 'https://www.kayak.co.in/Mumbai-Hotels.31288.hotel.ksp'
 x = url.split("/")[-1]
-y = x.split("-")[0]
+y = x.split("Hotels")[0][: len(x.split('Hotels')[0])-1]
 print(y)
 
 
