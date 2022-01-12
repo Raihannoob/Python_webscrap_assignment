@@ -21,18 +21,41 @@ This is basically a python code where we use scrapy library.Scrapy is a fast hig
 - Python
 - Mysql
 
-## Installation
+## Installation Steps 
+
+
+#### step 1
+ - Clone this project in your Computer
+#### step 2
+- After cloning this project open project and active venv by this command 
+ ```bash
+  source venv/bin/activate
+```
+#### step 3
+- Then install scrapy by this command 
+ ```bash
+  pip install Scrapy 
+```
+#### step 4
+- Then go to web_scrape Directory by this command
 
 ```bash
-  python3 --version
-  sudo apt-get install python(version)
-  Python3 -m venv venv
-  source venv/bin/activate
-  pip install Scrapy
-  scrapy startproject projectname
-  cd project name 
-  python -m pip install mysql-connector-python
+  cd web_scrape
+```
+#### step 5
+- Install mysqlconnector by this command 
 
+```bash
+  python -m pip install mysql-connector-python
+```
+#### step 6
+- Activate xamp server 
+
+
+#### step 7
+- Then run this project by this command 
+```bash
+  scrapy crawl quotes
 ```
     
 ## File Name and Directory
