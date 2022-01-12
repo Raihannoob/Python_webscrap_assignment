@@ -118,11 +118,16 @@ class QuotesSpider(scrapy.Spider):
 
 
 def web_data_to_Database(name, location, ratting, prices, Amenities, images):
-    sql = "INSERT INTO data_from_web(name,location,ratting,prices,Amenities,images) VALUES ( %s, %s, %s, %s, %s, %s)"
-
-    val = (name, location, ratting, prices, Amenities, images)
-    mycursor.execute(sql, val)
-
-    mydb.commit()
-
-    print(mycursor.rowcount, "record inserted.")
+    # check Data Duplicate data in database 
+    sql = "SELECT * FROM data_from_web WHERE name = %(value1)s AND location = %(value2)s"
+    params = {'value1':name, 'value2':location}
+    mycursor.execute(sql, params)
+    myresult = mycursor.fetchall()
+    if(len(myresult) == 0):
+        sql = "INSERT INTO data_from_web(name,location,ratting,prices,Amenities,images) VALUES ( %s, %s, %s, %s, %s, %s)"
+        val = (name, location, ratting, prices, Amenities, images)
+        mycursor.execute(sql, val)
+        mydb.commit()
+        print(mycursor.rowcount, "record inserted.")
+    else:
+        print("Data already exists")    
