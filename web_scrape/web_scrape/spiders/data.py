@@ -12,7 +12,7 @@ mycursor = mydb.cursor()
 
 print((mydb))
 
-url = 'https://www.kayak.co.in/Mumbai-Hotels.31288.hotel.ksp'
+url = 'https://www.kayak.co.in/Hyderabad-Hotels.7297.hotel.ksp'
 x = url.split("/")[-1]
 y = x.split("Hotels")[0][: len(x.split('Hotels')[0])-1]
 print(y)
@@ -70,8 +70,9 @@ class QuotesSpider(scrapy.Spider):
             value2 = data[i].css(
                 'div.soom .soom-content-wrapper .soom-description-wrapper .soom-description .soom-rating-wrapper span::text').get()
             if(value2 != None):
-                ratting = data[i].css(
+                r = data[i].css(
                     'div.soom .soom-content-wrapper .soom-description-wrapper .soom-description .soom-rating-wrapper span::text').get()
+                ratting= r.split(" ")[0]   
             else:
                 ratting = "N/A"
             rattings.append(ratting)
@@ -89,20 +90,22 @@ class QuotesSpider(scrapy.Spider):
             value4 = data[i].css(
                 'div.soom .soom-content-wrapper .soom-description-wrapper .soom-price::text').get()
             if(value4 != None):
-                price = data[i].css(
+                p = data[i].css(
                     'div.soom .soom-content-wrapper .soom-description-wrapper .soom-price::text').get()
+                p1 = p.split("\xa0")[1]    
+                price = p1.split("+")[0]
             else:
                 price = "N/A"
             prices.append(price)
             print(price)
 
             list_lower = data[i].css(
-                'div.soom .soom-content-wrapper .soom-freebies-section .soom-freebies .soom-freebie')
+                'div.soom .soom-content-wrapper .soom-freebies-section .NDqn-freebies .NDqn-freebie')
             sub_list = []
             for j in range(0, len(list_lower), 1):
                 sub_list.append(list_lower[j].css('span::text').get())
             sub_portion.append(sub_list)
-            print()
+            print(sub_list)
         for i in range(0, len(data), 1):
             print(images[i])
             print(locations[i])
