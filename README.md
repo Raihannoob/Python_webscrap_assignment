@@ -83,8 +83,8 @@ CREATE TABLE `data_from_web` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ## Feedback
 
-If you have any feedback, please reach out to us at tanvir@w3engineers.com
+If you have any feedback, please reach out to us at raihan.tanvir961@gmail.com
 
 
 ## 🚀 About Me
-I'm a Softwere Engineer Intern...
+I'm a Softwere Engineer
